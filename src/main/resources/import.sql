@@ -1,0 +1,11 @@
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-1',6,60.0,16.0,'LINUX_UBUNTU',4.5,'ATIVA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-2',24,200.0,32.0,'WINDOWS_10',2.3,'INATIVA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-3',32,32.0,8.0,'WINDOWS_11',1.7,'SUSPENSA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-4',8,16.0,16.0,'LINUX_UBUNTU',5.9,'INATIVA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-5',12,400.0,32.0,'LINUX_CENT_OS_7',4.2,'EM_ATUALIZACAO',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-6',16,330.0,16.0,'LINUX_CENT_OS_8',3.3,'ATIVA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-7',16,330.0,16.0,'LINUX_UBUNTU',1.0,'ATIVA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-8',32,1024.0,32.0,'WINDOWS_10',1.0,'ATIVA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-9',8,600.0,8.0,'LINUX_CENT_OS_7',1.0,'ATIVA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-10',4,80.0,64.0,'LINUX_CENT_OS_8',1.0,'ATIVA',0);
+insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-11',16,100.0,32.0,'LINUX_UBUNTU',1.0,'ATIVA',0);
