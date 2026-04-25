@@ -4,15 +4,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SegurancaConfig {
 
-    private final JWTFiltroAutenticacao jwtFiltroAutenticacao;
+    private final JWTFiltroAutenticacao filtro;
 
     public SegurancaConfig(JWTFiltroAutenticacao jwtFiltroAutenticacao) {
-        this.jwtFiltroAutenticacao = jwtFiltroAutenticacao;
+        this.filtro = jwtFiltroAutenticacao;
     }
 
     @Bean
@@ -24,7 +26,9 @@ public class SegurancaConfig {
                 .authorizeHttpRequests(request -> request
                         // .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/autenticacao/**").permitAll()
-                        .anyRequest().authenticated());
+                        .anyRequest().authenticated())
+                        .addFilterBefore(filtro, UsernamePasswordAuthenticationFilter.class)
+                        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return httpRequest.build();
 
