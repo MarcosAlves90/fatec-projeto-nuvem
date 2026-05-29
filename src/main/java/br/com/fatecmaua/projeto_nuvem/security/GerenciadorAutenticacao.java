@@ -12,5 +12,5 @@ public class GerenciadorAutenticacao {
 	public AuthenticationManager autenticar(AuthenticationConfiguration config) throws Exception {
 		return config.getAuthenticationManager();
 	}
- 
+
 }

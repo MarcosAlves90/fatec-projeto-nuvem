@@ -12,29 +12,31 @@ import io.jsonwebtoken.Jwts;
 
 @Component
 public class JWTUtil {
-
-    private final SecretKey CHAVE = Jwts.SIG.HS256.key().build();
-
-    public String gerarToken(String username, Integer duracao) {
-
-        Date dataAtual = new Date();
-
-        JwtBuilder builder = Jwts.builder()
-                .subject(username)
-                .issuedAt(dataAtual)
-                .expiration(new Date(dataAtual.getTime() + (1000 * 60 * duracao)))
-                .signWith(CHAVE);
-
-        return builder.compact();
-    }
-
-    public String extrairUsername(String token) {
-
-        JwtParser parser = Jwts.parser().verifyWith(CHAVE).build();
-
-        return parser.parseSignedClaims(token).getPayload().getSubject();
-    }
-
+	
+	private final SecretKey CHAVE = Jwts.SIG.HS256.key().build();
+	
+	
+	public String gerarToken(String username, Integer duracao) {
+		
+		Date data_atual = new Date();
+		
+		JwtBuilder builder = Jwts.builder()
+				.subject(username)
+				.issuedAt(data_atual)
+				.expiration(new Date(data_atual.getTime() + (1000 * 60 * duracao)))
+				.signWith(CHAVE);
+		return builder.compact();
+				
+	}
+	
+	public String extrairUsername(String token) {
+		
+		JwtParser parser = Jwts.parser().verifyWith(CHAVE).build();
+		
+		return parser.parseSignedClaims(token).getPayload().getSubject();
+		
+	}
+	
 	public boolean validarToken(String token) {
 		
 		try {

@@ -9,3 +9,6 @@ insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_
 insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-9',8,600.0,8.0,'LINUX_CENT_OS_7',1.0,'ATIVA',0);
 insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-10',4,80.0,64.0,'LINUX_CENT_OS_8',1.0,'ATIVA',0);
 insert into tb_instancia_virtual (nome,virtual_cpu,armazenamento_gb,memoria_ram_gb,sistema_operacional,custo_hora,status,qtd_requisicoes) values ('instancia-11',16,100.0,32.0,'LINUX_UBUNTU',1.0,'ATIVA',0);
+--senha: senha
+insert into pessoa(nome,cpf,data_nascimento,email_alternativo) values('Pessoa 1','111.222.333-44','1974-01-14','pessoa1@gmail.com');
+insert into usuario(email,senha,role,status,fk_pessoa) values('pessoa1@claudinho.com','$2a$12$IiST6vjzdpcjlRcTIyXhS.qvz6mwSbDhQVUh6Lbz0jh5/054f/cky','USER','ATIVO',1);
