@@ -8,21 +8,21 @@
 ![JWT](https://img.shields.io/badge/JWT-Auth-000000)
 ![Cache](https://img.shields.io/badge/Spring%20Cache-Enabled-6DB33F)
 
-API Spring Boot para gestao de instancias virtuais, balanceamento de carga, autenticacao JWT e CRUD de usuarios com cache.
+API Spring Boot para gestão de instâncias virtuais, balanceamento de carga, autenticação JWT e CRUD de usuários com cache.
 
-## Visao geral
+## Visão geral
 
-O projeto expoe uma API stateless protegida por JWT. As rotas de usuarios, instancias e balanceamento exigem autenticacao, enquanto `/autenticacao/**` permanece publica para geracao de tokens.
+O projeto expõe uma API stateless protegida por JWT. As rotas de usuários, instâncias e balanceamento exigem autenticação, enquanto `/autenticacao/**` permanece pública para geração de tokens.
 
 ### Principais capacidades
 
-- CRUD de usuarios com cache de leitura
-- Login com JWT e validade configuravel em minutos
-- Protecao de rotas via Spring Security
-- Gestao de instancias virtuais
-- Ativacao, inativacao e simulacao de custo hora
-- Balanceamento simples entre instancias ativas
-- Base H2 em memoria com dados iniciais
+- CRUD de usuários com cache de leitura
+- Login com JWT e validade configurável em minutos
+- Proteção de rotas via Spring Security
+- Gestão de instâncias virtuais
+- Ativação, inativação e simulação de custo hora
+- Balanceamento simples entre instâncias ativas
+- Base H2 em memória com dados iniciais
 
 ## Arquitetura
 
@@ -62,26 +62,26 @@ flowchart LR
 ./mvnw spring-boot:run
 ```
 
-## Acesso rapido
+## Acesso rápido
 
 - Base URL local: `http://localhost:8080`
 - Console H2: `http://localhost:8080/h2-console`
-- Autenticacao: `POST /autenticacao/login`
+- Autenticação: `POST /autenticacao/login`
 
-## Configuracao
+## Configuração
 
-Nao ha variaveis de ambiente obrigatorias para subir a aplicacao localmente. As principais configuracoes estao em `src/main/resources/application.properties` e podem ser sobrescritas se necessario.
+Não há variáveis de ambiente obrigatórias para subir a aplicação localmente. As principais configurações estão em `src/main/resources/application.properties` e podem ser sobrescritas se necessário.
 
 | Propriedade | Valor atual | Finalidade |
 | --- | --- | --- |
-| `spring.application.name` | `projeto_nuvem` | Nome logico da aplicacao |
-| `spring.datasource.url` | `jdbc:h2:mem:nuvem_db` | Banco H2 em memoria |
-| `spring.datasource.username` | `sa` | Usuario do banco H2 |
+| `spring.application.name` | `projeto_nuvem` | Nome lógico da aplicação |
+| `spring.datasource.url` | `jdbc:h2:mem:nuvem_db` | Banco H2 em memória |
+| `spring.datasource.username` | `sa` | Usuário do banco H2 |
 | `spring.datasource.password` | vazio | Senha do banco H2 |
 | `spring.h2.console.enabled` | `true` | Habilita o console web do H2 |
 | `spring.h2.console.path` | `/h2-console` | Caminho do console H2 |
 | `spring.jpa.show-sql` | `true` | Exibe SQL no console |
-| `spring.jpa.hibernate.ddl-auto` | `create` | Recria o schema ao subir a aplicacao |
+| `spring.jpa.hibernate.ddl-auto` | `create` | Recria o schema ao subir a aplicação |
 | `spring.jpa.database-platform` | `org.hibernate.dialect.H2Dialect` | Dialeto do banco |
 
 ## Testes
@@ -92,22 +92,22 @@ Nao ha variaveis de ambiente obrigatorias para subir a aplicacao localmente. As 
 
 ## Banco de dados
 
-### H2 em memoria
+### H2 em memória
 
 - URL: `jdbc:h2:mem:nuvem_db`
 - Console: `/h2-console`
-- Usuario: `sa`
+- Usuário: `sa`
 - Senha: vazia
 
 ### Seed inicial
 
-O `import.sql` cria instancias virtuais de exemplo e um usuario inicial:
+O `import.sql` cria instâncias virtuais de exemplo e um usuário inicial:
 
 - E-mail: `pessoa1@claudinho.com`
 - Senha: `senha`
 - Role: `USER`
 
-## Autenticacao
+## Autenticação
 
 Gerar token:
 
@@ -115,9 +115,9 @@ Gerar token:
 POST /autenticacao/login?username=...&password=...&duracao=15
 ```
 
-- `duracao` e opcional e representa a validade do token em minutos
-- A resposta e o JWT
-- Nas demais requisicoes, envie:
+- `duracao` é opcional e representa a validade do token em minutos
+- A resposta é o JWT
+- Nas demais requisições, envie:
 
 ```http
 Authorization: Bearer <token>
@@ -137,21 +137,21 @@ eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwZXNzb2ExQGNsYXVkZGluaG8uY29tIiwiaWF0IjoxNzE3MDA
 
 ## Rotas
 
-### Autenticacao
+### Autenticação
 
-| Metodo | Rota | Descricao |
+| Método | Rota | Descrição |
 | --- | --- | --- |
 | POST | `/autenticacao/login` | Gera token JWT |
 
-### Usuarios
+### Usuários
 
-| Metodo | Rota | Descricao |
+| Método | Rota | Descrição |
 | --- | --- | --- |
-| GET | `/usuario/todos` | Lista todos os usuarios |
-| GET | `/usuario/{id}` | Busca um usuario por ID |
-| POST | `/usuario/novo` | Cria um usuario |
-| PUT | `/usuario/{id}/atualizar` | Atualiza um usuario |
-| DELETE | `/usuario/{id}/remover` | Remove um usuario |
+| GET | `/usuario/todos` | Lista todos os usuários |
+| GET | `/usuario/{id}` | Busca um usuário por ID |
+| POST | `/usuario/novo` | Cria um usuário |
+| PUT | `/usuario/{id}/atualizar` | Atualiza um usuário |
+| DELETE | `/usuario/{id}/remover` | Remove um usuário |
 
 Exemplo autenticado:
 
@@ -176,18 +176,18 @@ curl -H "Authorization: Bearer <token>" \
 ]
 ```
 
-### Instancias virtuais
+### Instâncias virtuais
 
-| Metodo | Rota | Descricao |
+| Método | Rota | Descrição |
 | --- | --- | --- |
-| POST | `/instancia-virtual/nova` | Cria uma nova instancia virtual |
-| GET | `/instancia-virtual/todas` | Lista todas as instancias |
-| GET | `/instancia-virtual/{id}` | Busca uma instancia por ID |
-| PATCH | `/instancia-virtual/{id}/ativar` | Ativa uma instancia |
-| PATCH | `/instancia-virtual/{id}/inativar` | Inativa uma instancia |
+| POST | `/instancia-virtual/nova` | Cria uma nova instância virtual |
+| GET | `/instancia-virtual/todas` | Lista todas as instâncias |
+| GET | `/instancia-virtual/{id}` | Busca uma instância por ID |
+| PATCH | `/instancia-virtual/{id}/ativar` | Ativa uma instância |
+| PATCH | `/instancia-virtual/{id}/inativar` | Inativa uma instância |
 | POST | `/instancia-virtual/simular-elasticidade` | Calcula o custo hora de elasticidade |
 
-Exemplo de simulacao:
+Exemplo de simulação:
 
 ```bash
 curl -X POST \
@@ -205,9 +205,9 @@ curl -X POST \
 
 ### Balanceamento
 
-| Metodo | Rota | Descricao |
+| Método | Rota | Descrição |
 | --- | --- | --- |
-| GET | `/balanceador` | Atribui a requisicao para uma instancia ativa |
+| GET | `/balanceador` | Atribui a requisição para uma instância ativa |
 
 Exemplo:
 
@@ -219,11 +219,11 @@ curl -H "Authorization: Bearer <token>" \
 ### Exemplo de resposta
 
 ```text
-A requisicao/sessao foi atribuida para instancia:
+A requisição/sessão foi atribuída para instância:
 Nome: instancia-1
 SO: LINUX_UBUNTU
 Status: Ativa
-Qtd de Requisicoes: 1
+Qtd de Requisições: 1
 ```
 
 ## Fluxo de uso
@@ -231,35 +231,35 @@ Qtd de Requisicoes: 1
 ```mermaid
 sequenceDiagram
     autonumber
-    participant U as Usuario
+    participant U as Usuário
     participant A as API
     participant S as Spring Security
     participant J as JWTUtil
-    participant R as Repositorios
+    participant R as Repositórios
 
     U->>A: POST /autenticacao/login
     A->>S: autentica credenciais
-    S->>R: carrega usuario por email
+    S->>R: carrega usuário por e-mail
     A->>J: gera JWT
     J-->>U: token
-    U->>A: requisicao com Bearer token
+    U->>A: requisição com Bearer token
     A->>S: valida token
-    S->>R: carrega usuario autenticado
+    S->>R: carrega usuário autenticado
     A-->>U: resposta da rota protegida
 ```
 
 ## Estrutura do projeto
 
 - `control` - controllers da API
-- `dto` - objetos de transferencia
-- `mapper` - conversao manual entre entidades e DTOs
+- `dto` - objetos de transferência
+- `mapper` - conversão manual entre entidades e DTOs
 - `model` - entidades e enums
 - `repository` - acesso aos dados
-- `security` - autenticacao, JWT e configuracao de seguranca
-- `service` - regras de negocio
+- `security` - autenticação, JWT e configuração de segurança
+- `service` - regras de negócio
 
-## Observacoes
+## Observações
 
-- O projeto usa H2 em memoria, entao os dados sao recriados ao subir a aplicacao.
-- A listagem de usuarios usa cache e as operacoes de alteracao limpam o cache.
-- Todas as rotas, exceto `/autenticacao/**`, exigem autenticacao.
+- O projeto usa H2 em memória, então os dados são recriados ao subir a aplicação.
+- A listagem de usuários usa cache e as operações de alteração limpam o cache.
+- Todas as rotas, exceto `/autenticacao/**`, exigem autenticação.
